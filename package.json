@@ -30,6 +30,10 @@
     "@commitlint/cli": "^16.0.2",
     "@commitlint/config-conventional": "^16.0.0",
     "@nrwl/cli": "^13.4.4",
+    "@nrwl/devkit": "13.2.3",
+    "@nrwl/eslint-plugin-nx": "13.4.4",
+    "@nrwl/jest": "13.4.4",
+    "@nrwl/linter": "13.4.4",
     "@nrwl/tao": "^13.4.4",
     "@nrwl/workspace": "^13.4.4",
     "@types/jest": "^27.4.0",
@@ -48,10 +52,14 @@
     "npm-audit-resolver": "^2.3.1",
     "prettier": "^2.5.1",
     "syncpack": "^6.2.0",
+    "ts-jest": "27.0.5",
     "typescript": "^4.5.4"
   },
   "engines": {
     "node": "^14.18.1"
   },
-  "packageManager": "yarn@3.1.1"
+  "packageManager": "yarn@3.1.1",
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
 }

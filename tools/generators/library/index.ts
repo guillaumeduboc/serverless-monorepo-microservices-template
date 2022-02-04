@@ -212,6 +212,8 @@ export const libraryGenerator = async (
 ): Promise<GeneratorCallback> => {
   const options = normalizeOptions(tree, schema);
 
+  console.log('options', options);
+
   createFiles(tree, options);
 
   if (!(options.skipTsConfig === true)) {
@@ -240,6 +242,8 @@ export const libraryGenerator = async (
 export const librarySchematic = convertNxGenerator(libraryGenerator);
 
 const normalizeOptions = (tree: Tree, options: Schema): NormalizedSchema => {
+  console.log('tree', tree);
+
   const name = names(options.name).fileName;
   const projectDirectory =
     options.directory !== undefined && options.directory !== ''
@@ -261,6 +265,8 @@ const normalizeOptions = (tree: Tree, options: Schema): NormalizedSchema => {
   });
 
   const { libsDir, npmScope } = getWorkspaceLayout(tree);
+  console.log('libsDir', libsDir);
+  console.log('npmScope', npmScope);
 
   const projectRoot = joinPathFragments(libsDir, projectDirectory);
 

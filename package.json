@@ -25,7 +25,7 @@
     "test:type": "nx run-many --target=test:type --all --parallel=4",
     "test:unit": "nx run-many --target=test:unit --all --parallel=4",
     "watch": "nx run-many --target=watch --all  --parallel=4",
-    "generate-package": "npx nx workspace-generator my-generator guid-guiv"
+    "generate-package": "nx workspace-generator my-generator"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.0.2",

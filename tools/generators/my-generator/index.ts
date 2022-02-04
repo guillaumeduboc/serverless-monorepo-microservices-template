@@ -124,35 +124,6 @@ const updateTsConfig = (tree: Tree, options: NormalizedSchema) => {
   );
 };
 
-const updateRootTsConfig = (host: Tree, options: NormalizedSchema) => {
-  updateJson(host, 'tsconfig.json', (json: JsonType) => {
-    const c = json.compilerOptions;
-    c.paths = c.paths ?? {};
-    delete c.paths[options.name];
-
-    if (
-      options.importPath !== undefined &&
-      c.paths[options.importPath] !== undefined
-    ) {
-      throw new Error(
-        `You already have a library using the import path "${options.importPath}". Make sure to specify a unique one.`,
-      );
-    }
-
-    if (options.importPath !== undefined) {
-      c.paths[options.importPath] = [
-        joinPathFragments(
-          options.projectRoot,
-          './src',
-          'index.' + (options.js === true ? 'js' : 'ts'),
-        ),
-      ];
-    }
-
-    return json;
-  });
-};
-
 const createFiles = (tree: Tree, options: NormalizedSchema) => {
   const { className, name, propertyName } = names(options.name);
 
@@ -214,9 +185,6 @@ export const libraryGenerator = async (
 
   createFiles(tree, options);
 
-  if (!(options.skipTsConfig === true)) {
-    updateRootTsConfig(tree, options);
-  }
   addProject(tree, options);
 
   const tasks: GeneratorCallback[] = [];
